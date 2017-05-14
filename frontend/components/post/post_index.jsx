@@ -6,7 +6,7 @@ class PostIndex extends Component {
     super(props);
     this.deletePost = this.deletePost.bind(this);
   }
-  
+
   componentDidMount() {
     this.props.requestAllPost();
   }
@@ -18,16 +18,16 @@ class PostIndex extends Component {
   render() {
     const posts = this.props.posts;
     return (
-      <section>
+      <div>
         <ul>
-          {posts.map((post) => (
-            <li key={post.id}>
+          {posts.map((post, i) => (
+            <li key={'post-li-key-' + i}>
               {post.title}
               <button onClick={this.deletePost} value={post.id}>Delete Post</button>
             </li>
           ))}
         </ul>
-      </section>
+      </div>
     );
   }
 }
