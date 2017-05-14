@@ -6,11 +6,13 @@ class PostIndex extends Component {
     super(props);
     this.deletePost = this.deletePost.bind(this);
   }
+  
   componentDidMount() {
     this.props.requestAllPost();
   }
+
   deletePost(e) {
-    console.log(e.target.value);
+    this.props.deletePost(e.target.value);
   }
 
   render() {
