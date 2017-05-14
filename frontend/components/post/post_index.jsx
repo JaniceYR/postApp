@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
-import PostFormContainer from './post_form_container';
 
 class PostIndex extends Component {
   constructor (props) {
     super(props);
+    this.state = {
+      title: "",
+      body: ""
+    }
     this.deletePost = this.deletePost.bind(this);
+    this.changeTitle = this.changeTitle.bind(this);
+    this.changeBody = this.changeBody.bind(this);
+    this.submitCreate = this.submitCreate.bind(this);
   }
 
   componentDidMount() {
@@ -16,19 +22,41 @@ class PostIndex extends Component {
     this.props.deletePost(e.target.value);
   }
 
+  changeTitle(e){
+    this.setState({title: e.target.value})
+  }
+
+  changeBody(e){
+    this.setState({body: e.target.value})
+  }
+
+  submitCreate(e){
+    e.preventDefault();
+    this.props.createPost(this.state);
+    this.props.requestAllPost();
+    this.setState({title: "", body: ""});
+  }
+
   render() {
     const posts = this.props.posts;
     return (
       <div>
-        <ul>
-          {posts.map((post, i) => (
-            <li key={'post-li-key-' + i}>
-              {post.title}
-              <button onClick={this.deletePost} value={post.id}>Delete Post</button>
-            </li>
-          ))}
-        </ul>
-        <PostFormContainer />
+        <section>
+          <ul>
+            {posts.map((post, i) => (
+              <li key={'post-li-key-' + i}>
+                {post.title}
+                <button onClick={this.deletePost} value={post.id}>Delete Post</button>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section>
+          <h3> Create New Post</h3>
+          Title: <input onChange={this.changeTitle} value={this.state.title} />
+          body: <input onChange={this.changeBody} value={this.state.body} />
+        <button onClick={this.submitCreate}>New Post</button>
+        </section>
       </div>
     );
   }

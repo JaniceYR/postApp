@@ -23,6 +23,6 @@ export const createPost = (post) => {
   return $.ajax({
     method: "POST",
     url: "/api/posts",
-    date: {post}
+    data: {post}
   });
 };

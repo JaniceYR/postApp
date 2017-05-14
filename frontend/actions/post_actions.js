@@ -27,7 +27,7 @@ export const deletePost = (postId) => (dispatch) => {
     .then((post) => dispatch(removePost(post)));
 };
 
-// Form Page, Create new post
+// Index Page, Create new post
 export const receiveNewPost = post => ({
   type: RECEIVE_NEW_POST,
   post

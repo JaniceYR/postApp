@@ -1,6 +1,7 @@
 import { merge } from 'lodash';
 
-import { RECEIVE_ALL_POST, RECEIVE_SHOW_POST, REMOVE_POST, RECEIVE_NEW_POST } from '../actions/post_actions';
+import { RECEIVE_ALL_POST, RECEIVE_SHOW_POST,
+  REMOVE_POST, RECEIVE_NEW_POST } from '../actions/post_actions';
 
 const initState = {
   id: 0,
@@ -17,8 +18,7 @@ const PostReducer = (state = initState, action) => {
     case RECEIVE_SHOW_POST:
       return merge({}, action.post);
     case RECEIVE_NEW_POST:
-      newState = merge({}, state);
-      newState = merge(newState, action.post);
+      newState = merge(state, action.post);
       return newState;
     case REMOVE_POST:
       newState = merge({}, state);
