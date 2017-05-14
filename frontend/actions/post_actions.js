@@ -11,7 +11,7 @@ export const receiveAllPost = posts => ({
 
 export const requestAllPost = () => (dispatch) => {
   return APIUtil.fetchAllPost()
-    .then(post => dispatch(receiveAllPost(post)));
+    .then(posts => dispatch(receiveAllPost(posts)));
 };
 
 // Show Page, Show 1 Post with details
