@@ -39,13 +39,14 @@ export const createPost = (post) => (dispatch) => {
 };
 
 // Show Page, Show 1 Post with details
-export const receiveShowPost = post => ({
-  type: RECEIVE_SHOW_POST,
-  post
-});
+export const receiveShowPost = postShow => {
+  return ({
+    type: RECEIVE_SHOW_POST,
+    postShow
+  });
+};
 
 export const requestShowPost = (postId) => (dispatch) => {
-  return APIUtil.fetchShowPost(postId).then(post => {
-    dispatch(receiveShowPost(post));
-  });
+  return APIUtil.fetchShowPost(postId)
+    .then(postShow => dispatch(receiveShowPost(postShow)));
 };
