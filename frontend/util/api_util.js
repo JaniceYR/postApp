@@ -18,3 +18,11 @@ export const deletePost = (postId) => {
     url: `/api/posts/${postId}`
   });
 };
+
+export const createPost = (post) => {
+  return $.ajax({
+    method: "POST",
+    url: "/api/posts",
+    date: {post}
+  });
+};

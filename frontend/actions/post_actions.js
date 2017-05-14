@@ -2,6 +2,7 @@ import * as APIUtil from '../util/api_util';
 
 export const RECEIVE_ALL_POST = "RECEIVE_ALL_POST";
 export const RECEIVE_SHOW_POST = "RECEIVE_SHOW_POST";
+export const RECEIVE_NEW_POST = "RECEIVE_NEW_POST";
 export const REMOVE_POST = "REMOVE_POST";
 
 // Index Page, Show all Posts
@@ -24,6 +25,17 @@ export const removePost = post => ({
 export const deletePost = (postId) => (dispatch) => {
   return APIUtil.deletePost(postId)
     .then((post) => dispatch(removePost(post)));
+};
+
+// Form Page, Create new post
+export const receiveNewPost = post => ({
+  type: RECEIVE_NEW_POST,
+  post
+});
+
+export const createPost = (post) => (dispatch) => {
+  return APIUtil.createPost(post)
+    .then((newPost) => dispatch(receiveNewPost(newPost)));
 };
 
 // Show Page, Show 1 Post with details

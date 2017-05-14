@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
+import PostFormContainer from './post_form_container';
 
 class PostIndex extends Component {
   constructor (props) {
@@ -27,6 +28,7 @@ class PostIndex extends Component {
             </li>
           ))}
         </ul>
+        <PostFormContainer />
       </div>
     );
   }
