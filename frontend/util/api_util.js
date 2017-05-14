@@ -11,3 +11,10 @@ export const fetchShowPost = (postId) => {
     url: `/api/posts/${postId}`
   });
 };
+
+export const deletePost = (postId) => {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/posts/${postId}`
+  });
+};
